@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Title from './components/Title'
-import { QuizData } from '../interfaces'
+import { QuizData, Content } from '../interfaces'
+import QuestionsBlock from './components/QuestionsBlock';
+
 
 
 const App = () => {
@@ -25,6 +27,13 @@ useEffect(()=> {
   return (
     <div>
  < Title title={quiz?.title} subtitle={quiz?.subtitle} />
+ {quiz?.content.map((content: Content, id: Content['id']) => (
+ <QuestionsBlock
+ key={id}
+ quizItem={content}
+
+ />
+ ))}
     </div>
   );
 }
